@@ -6,6 +6,7 @@ Requires:
 * Score-P https://www.vi-hps.org/projects/score-p/ with PAPI support
 * GCC with support for pthreads
 * A kernel that allows measuring specific events
+* Application of the patch for FIRESTARTER
 
 Build command
 ```make```
