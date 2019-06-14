@@ -1,0 +1,32 @@
+diff --git a/source_files/work.c b/source_files/work.c
+index 500d262..8b6b958 100644
+--- a/source_files/work.c
++++ b/source_files/work.c
+@@ -48,15 +48,21 @@
+ int low_load_function(volatile unsigned long long addrHigh, unsigned int period) __attribute__((noinline));
+ int low_load_function(volatile unsigned long long addrHigh, unsigned int period)
+ {
+-    int nap;
+-
+-    nap = period / 100;
+-    __asm__ __volatile__ ("mfence;"
+-                  "cpuid;" ::: "eax", "ebx", "ecx", "edx");
+     while(*((volatile unsigned long long *)addrHigh) == LOAD_LOW){
+         __asm__ __volatile__ ("mfence;"
+                       "cpuid;" ::: "eax", "ebx", "ecx", "edx");
+-        usleep(nap);
++        __asm__ __volatile__ ("mfence;"
++                      "cpuid;" ::: "eax", "ebx", "ecx", "edx");
++        __asm__ __volatile__ ("mfence;"
++                      "cpuid;" ::: "eax", "ebx", "ecx", "edx");
++        __asm__ __volatile__ ("mfence;"
++                      "cpuid;" ::: "eax", "ebx", "ecx", "edx");
++        __asm__ __volatile__ ("mfence;"
++                      "cpuid;" ::: "eax", "ebx", "ecx", "edx");
++        __asm__ __volatile__ ("mfence;"
++                      "cpuid;" ::: "eax", "ebx", "ecx", "edx");
++        __asm__ __volatile__ ("mfence;"
++                      "cpuid;" ::: "eax", "ebx", "ecx", "edx");
+         __asm__ __volatile__ ("mfence;"
+                       "cpuid;" ::: "eax", "ebx", "ecx", "edx");
+     }
